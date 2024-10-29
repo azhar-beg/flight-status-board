@@ -6,7 +6,6 @@ import { FlightStatus } from './Flights';
 
 const mockedAxios = flightServiceClient as jest.Mocked<typeof flightServiceClient>;
 
-
 jest.mock('../../api/httpClient');
 
 const mockFlights = [
@@ -17,7 +16,7 @@ const mockFlights = [
     origin: 'JFK',
     destination: 'LAX',
     departureTime: '2023-10-01T10:00:00Z',
-    status: FlightStatus.OnTime,
+    status: FlightStatus.OnTime
   },
   {
     id: 2,
@@ -26,8 +25,8 @@ const mockFlights = [
     origin: 'ATL',
     destination: 'SFO',
     departureTime: '2023-10-01T12:00:00Z',
-    status: FlightStatus.Delayed,
-  },
+    status: FlightStatus.Delayed
+  }
 ];
 
 describe('Flights Component', () => {

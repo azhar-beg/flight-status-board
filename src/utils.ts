@@ -6,6 +6,6 @@ export const formatTime = (departureTime: string): string => {
     day: 'numeric',
     hour: '2-digit',
     minute: '2-digit',
-    hour12: true, // Set to false for 24-hour format
+    hour12: true // Set to false for 24-hour format
   });
 };

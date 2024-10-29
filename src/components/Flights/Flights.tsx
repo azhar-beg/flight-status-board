@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { flightServiceClient } from '../../api/httpClient';
-import {formatTime} from '../../utils';
+import { formatTime } from '../../utils';
 
 export enum FlightStatus {
   OnTime = 'On Time',
@@ -45,36 +45,36 @@ const Flights = () => {
   }
 
   if (error) {
-    return <div>Error loading flights</div>
+    return <div>Error loading flights</div>;
   }
 
   if (flights.length === 0) {
-    return <div>No flights available</div>
+    return <div>No flights available</div>;
   }
 
   return (
     <table>
       <thead>
-      <tr>
-        <th>Flight Number</th>
-        <th>Airline</th>
-        <th>Origin</th>
-        <th>Destination</th>
-        <th>Departure Time</th>
-        <th>Status</th>
-      </tr>
+        <tr>
+          <th>Flight Number</th>
+          <th>Airline</th>
+          <th>Origin</th>
+          <th>Destination</th>
+          <th>Departure Time</th>
+          <th>Status</th>
+        </tr>
       </thead>
       <tbody>
-      {flights.map((flight) => (
-        <tr key={flight.id}>
-          <td>{flight.flightNumber}</td>
-          <td>{flight.airline}</td>
-          <td>{flight.origin}</td>
-          <td>{flight.destination}</td>
-          <td>{formatTime(flight.departureTime)}</td>
-          <td>{flight.status}</td>
-        </tr>
-      ))}
+        {flights.map((flight) => (
+          <tr key={flight.id}>
+            <td>{flight.flightNumber}</td>
+            <td>{flight.airline}</td>
+            <td>{flight.origin}</td>
+            <td>{flight.destination}</td>
+            <td>{formatTime(flight.departureTime)}</td>
+            <td>{flight.status}</td>
+          </tr>
+        ))}
       </tbody>
     </table>
   );
