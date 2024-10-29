@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { flightServiceClient } from '../../api/httpClient';
 import { formatTime } from '../../utils';
 
@@ -20,6 +21,7 @@ export interface Flight {
 }
 
 const Flights = () => {
+  const navigate = useNavigate();
   const [flights, setFlights] = useState<Flight[]>([]);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -66,7 +68,7 @@ const Flights = () => {
       </thead>
       <tbody>
         {flights.map((flight) => (
-          <tr key={flight.id}>
+          <tr key={flight.id} onClick={() => navigate(`/flight-details/${flight.id}`)}>
             <td>{flight.flightNumber}</td>
             <td>{flight.airline}</td>
             <td>{flight.origin}</td>
