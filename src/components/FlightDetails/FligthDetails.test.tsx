@@ -3,6 +3,8 @@ import { render, screen, waitFor } from '@testing-library/react';
 import FlightDetails from './FlightDetails';
 import { flightServiceClient } from '../../api/httpClient';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
+import { ThemeProvider } from 'styled-components';
+import theme from '../../utils/theme';
 
 const mockedAxios = flightServiceClient as jest.Mocked<typeof flightServiceClient>;
 
@@ -39,21 +41,23 @@ describe('FlightDetails Component', () => {
     mockedAxios.get.mockResolvedValueOnce({ data: mockFlightDetails });
 
     render(
+      <ThemeProvider theme={theme}>
       <MemoryRouter initialEntries={['/flights/1']}>
         <Routes>
           <Route path="/flights/:id" element={<FlightDetails />} />
         </Routes>
       </MemoryRouter>
+      </ThemeProvider>
     );
 
     await waitFor(() => {
       expect(screen.getByText('Flight Details')).toBeInTheDocument();
-      expect(screen.getByText('Flight Number: AA123')).toBeInTheDocument();
-      expect(screen.getByText('Airline: American Airlines')).toBeInTheDocument();
-      expect(screen.getByText('Origin: JFK')).toBeInTheDocument();
-      expect(screen.getByText('Destination: LAX')).toBeInTheDocument();
-      expect(screen.getByText('Departure Time: October 1, 2023 at 03:30 PM')).toBeInTheDocument();
-      expect(screen.getByText('Status: On Time')).toBeInTheDocument();
+      expect(screen.getByText('AA123')).toBeInTheDocument();
+      expect(screen.getByText('American Airlines')).toBeInTheDocument();
+      expect(screen.getByText('JFK')).toBeInTheDocument();
+      expect(screen.getByText('LAX')).toBeInTheDocument();
+      expect(screen.getByText('October 1, 2023 at 03:30 PM')).toBeInTheDocument();
+      expect(screen.getByText('On Time')).toBeInTheDocument();
     });
   });
 

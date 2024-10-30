@@ -15,22 +15,22 @@ describe('Header Component', () => {
   });
 
   it('renders the navigation menu with all links', () => {
-    render(
+    const { container } = render(
       <ThemeProvider theme={theme}>
         <Header />
       </ThemeProvider>
     );
-    expect(screen.getByText('Home')).toBeInTheDocument();
-    expect(screen.getByText('Flights')).toBeInTheDocument();
+    expect(container.querySelector('#home')).toBeInTheDocument();
+    expect(container.querySelector('#flights')).toBeInTheDocument();
   });
 
   it('navigates to the correct path when a link is clicked', () => {
-    render(
+    const { container } = render(
       <ThemeProvider theme={theme}>
         <Header />
       </ThemeProvider>
     );
-    expect(screen.getByText('Home').closest('a')).toHaveAttribute('href', '/');
-    expect(screen.getByText('Flights').closest('a')).toHaveAttribute('href', '/');
+    expect(container.querySelector('#home')!.closest('a')).toHaveAttribute('href', '/');
+    expect(container.querySelector('#flights')!.closest('a')).toHaveAttribute('href', '/');
   });
 });

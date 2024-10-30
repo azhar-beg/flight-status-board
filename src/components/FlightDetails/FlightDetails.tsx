@@ -8,7 +8,7 @@ import {
   FlightInfoContainer,
   FlightInfo,
   Line,
-  OriginDestination,
+  Journey,
   PlaneIcon,
   Status
 } from './FlightDetails.styles';
@@ -53,14 +53,13 @@ const FlightDetails = () => {
         <FlightInfo>{flightDetails.flightNumber}</FlightInfo>
         <FlightInfo>{flightDetails.airline}</FlightInfo>
       </FlightInfoContainer>
-
-      <OriginDestination>
+      <Journey>
         <span>{flightDetails.origin}</span>
         <Line />
         <PlaneIcon src={planeIcon} alt="Plane" />
         <Line />
         <span>{flightDetails.destination}</span>
-      </OriginDestination>
+      </Journey>
     </Container>
   );
 };

@@ -1,6 +1,6 @@
 import React, { act } from 'react';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
-import Flights, { FlightStatus } from './Flights';
+import Flights from './Flights';
 import { flightServiceClient } from '../../api/httpClient';
 import { ThemeProvider } from 'styled-components';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -26,7 +26,7 @@ const mockFlights = [
     origin: 'JFK',
     destination: 'LAX',
     departureTime: '2023-10-01T10:00:00Z',
-    status: FlightStatus.OnTime
+    status: 'On Time'
   },
   {
     id: 2,
@@ -35,7 +35,7 @@ const mockFlights = [
     origin: 'ATL',
     destination: 'SFO',
     departureTime: '2023-10-01T12:00:00Z',
-    status: FlightStatus.Delayed
+    status: 'Delayed'
   }
 ];
 
@@ -139,7 +139,7 @@ describe('Flights Component', () => {
           origin: 'JFK',
           destination: 'LAX',
           departureTime: '2023-10-01T10:00:00Z',
-          status: FlightStatus.OnTime
+          status: 'On Time'
         }
       ]
     });

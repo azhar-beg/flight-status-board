@@ -12,12 +12,12 @@ export const Container = styled.div`
 
 export const Title = styled.h2`
   color: #343a40;
+  overflow-x: auto;
   margin-bottom: 20px;
 `;
 
 export const FlightInfoContainer = styled.div`
   display: flex;
-  flex-wrap: nowrap;
   overflow-x: auto;
   align-items: center;
   margin-bottom: 20px;
@@ -25,9 +25,6 @@ export const FlightInfoContainer = styled.div`
 
 export const FlightInfo = styled.span`
   margin: 15px;
-  font-size: 16px;
-  color: #444444;
-  white-space: nowrap;
 `;
 
 export const Line = styled.div`
@@ -37,14 +34,8 @@ export const Line = styled.div`
   margin: 0 10px;
 `;
 
-export const FlightPathContainer = styled.div`
-  display: flex;
-  align-items: center;
-  width: 85%;
-  margin: auto;
-`;
-
-export const OriginDestination = styled.div`
+export const Journey = styled.div`
+  overflow-x: auto;
   display: flex;
   align-items: center;
 `;
@@ -70,9 +61,5 @@ export const Status = styled.span`
 
   &.status-departed {
     color: gray;
-  }
-
-  &.status-unknown {
-    color: black;
   }
 `;

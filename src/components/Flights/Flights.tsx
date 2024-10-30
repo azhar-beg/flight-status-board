@@ -4,13 +4,6 @@ import { formatTime } from '../../utils/utils';
 import useFlightData from '../../hooks/useFlightData';
 import { DepartureTime, StyledTable, TableContainer } from './Flights.styles';
 
-export enum FlightStatus {
-  OnTime = 'On Time',
-  Delayed = 'Delayed',
-  Boarding = 'Boarding',
-  Departed = 'Departed'
-}
-
 export interface Flight {
   id: number;
   flightNumber: string;
@@ -18,7 +11,7 @@ export interface Flight {
   origin: string;
   destination: string;
   departureTime: string;
-  status: FlightStatus;
+  status: string;
 }
 
 const Flights = () => {

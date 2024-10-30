@@ -8,38 +8,20 @@ export const HeaderContainer = styled.header`
 `;
 
 export const Title = styled.h1`
+  padding-left: 10px;
   color: ${({ theme }) => theme.colors.text};
 `;
 
 export const NavMenu = styled.nav`
   ul {
+    overflow-x: auto;
+    padding-left: 10px;
     list-style-type: none;
-    padding: 0;
-    margin: 0;
     display: flex;
-    flex-wrap: wrap;
-    background-color: ${({ theme }) =>
-      theme.colors.primary}; /* Ensure background color is applied */
+    background-color: ${({ theme }) => theme.colors.primary};
 
-    li {
+    li:nth-last-child(1) {
       margin-left: 20px;
-
-      a {
-        text-decoration: none;
-        color: ${({ theme }) => theme.colors.text};
-        &:hover {
-          color: #b7b7b7; /* Light gray on hover */
-        }
-      }
-    }
-
-    @media (max-width: 768px) {
-      justify-content: center;
-
-      li {
-        margin-left: 10px;
-        margin-bottom: 10px;
-      }
     }
   }
 `;

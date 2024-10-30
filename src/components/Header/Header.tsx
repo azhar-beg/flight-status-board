@@ -1,5 +1,7 @@
 import React from 'react';
 import { HeaderContainer, NavMenu, Title } from './Header.styles';
+import airplaneLogo from '../../assets/airplane.png';
+import homeLogo from '../../assets/home.png';
 
 const Header = () => (
   <HeaderContainer>
@@ -8,10 +10,22 @@ const Header = () => (
       <NavMenu>
         <ul>
           <li>
-            <a href="/">Home</a>
+            <a href="/" id="home">
+              <img
+                src={homeLogo}
+                alt="Home"
+                style={{ width: '30px', height: '30px', marginRight: '5px' }}
+              />
+            </a>
           </li>
           <li>
-            <a href="/">Flights</a>
+            <a href="/" id="flights">
+              <img
+                src={airplaneLogo}
+                alt="Flights"
+                style={{ width: '30px', height: '30px', marginRight: '5px' }}
+              />
+            </a>
           </li>
         </ul>
       </NavMenu>
