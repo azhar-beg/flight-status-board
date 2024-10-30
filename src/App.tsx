@@ -5,7 +5,6 @@ import Flights from './components/Flights/Flights';
 import FlightDetails from './components/FlightDetails/FlightDetails';
 
 function App() {
-  console.log('App');
   return (
     <div>
       <h1>Flight Status Board</h1>

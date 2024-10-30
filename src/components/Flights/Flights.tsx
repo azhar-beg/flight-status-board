@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { flightServiceClient } from '../../api/httpClient';
 import { formatTime } from '../../utils';
+import useFlightData from '../../hooks/useFlightData';
 
 export enum FlightStatus {
   OnTime = 'On Time',
@@ -22,40 +22,22 @@ export interface Flight {
 
 const Flights = () => {
   const navigate = useNavigate();
-  const [flights, setFlights] = useState<Flight[]>([]);
-  const [error, setError] = useState(false);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchFlightData = async () => {
-      console.log('fetchFlightData');
-      try {
-        const response = await flightServiceClient.get('/flights');
-        setFlights(response.data);
-      } catch {
-        setError(true);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchFlightData();
-  }, []);
+  const { response: flights, error, loading } = useFlightData<Flight[]>();
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div>Loading flights...</div>;
   }
 
   if (error) {
-    return <div>Error loading flights</div>;
+    return <div>Failed to load flights. Please try again later.</div>;
   }
 
-  if (flights.length === 0) {
+  if (!flights || flights.length === 0) {
     return <div>No flights available</div>;
   }
 
   return (
-    <table>
+    <table role="table">
       <thead>
         <tr>
           <th>Flight Number</th>
@@ -68,7 +50,12 @@ const Flights = () => {
       </thead>
       <tbody>
         {flights.map((flight) => (
-          <tr key={flight.id} onClick={() => navigate(`/flight-details/${flight.id}`)}>
+          <tr
+            key={flight.id}
+            onClick={() => navigate(`/flight-details/${flight.id}`)}
+            role="row"
+            style={{ cursor: 'pointer' }}
+          >
             <td>{flight.flightNumber}</td>
             <td>{flight.airline}</td>
             <td>{flight.origin}</td>

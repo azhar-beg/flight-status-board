@@ -31,7 +31,7 @@ describe('FlightDetails Component', () => {
           <Route path="/flights/:id" element={<FlightDetails />} />
         </Routes>
       </MemoryRouter>
-    )
+    );
     expect(screen.getByText('Loading...')).toBeInTheDocument();
   });
 
@@ -44,7 +44,7 @@ describe('FlightDetails Component', () => {
           <Route path="/flights/:id" element={<FlightDetails />} />
         </Routes>
       </MemoryRouter>
-    )
+    );
 
     await waitFor(() => {
       expect(screen.getByText('Flight Details')).toBeInTheDocument();
@@ -66,7 +66,7 @@ describe('FlightDetails Component', () => {
           <Route path="/flights/:id" element={<FlightDetails />} />
         </Routes>
       </MemoryRouter>
-    )
+    );
 
     await waitFor(() => {
       expect(screen.queryByText('Loading...')).not.toBeInTheDocument();
@@ -83,7 +83,7 @@ describe('FlightDetails Component', () => {
           <Route path="/flights/:id" element={<FlightDetails />} />
         </Routes>
       </MemoryRouter>
-    )
+    );
 
     await waitFor(() => {
       expect(screen.queryByText('Loading...')).not.toBeInTheDocument();

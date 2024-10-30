@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useParams } from 'react-router-dom';
-import { flightServiceClient } from '../../api/httpClient';
 import { formatTime } from '../../utils';
+import useFlightData from '../../hooks/useFlightData';
 
 export interface FlightDetails {
   id: number;
@@ -15,26 +15,8 @@ export interface FlightDetails {
 
 const FlightDetails = () => {
   const { id } = useParams();
-  const [flightDetails, setFlightDetails] = useState<FlightDetails | null>(null);
-  const [error, setError] = useState(false);
-  const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const fetchFlightData = async () => {
-      console.log('fetchFlightData');
-      try {
-        const response = await flightServiceClient.get(`/flights/${id}`);
-        setFlightDetails(response.data);
-      } catch {
-        setError(true);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchFlightData();
-  }, []);
-
+  const { response: flightDetails, error, loading } = useFlightData<FlightDetails>(Number(id));
   if (loading) {
     return <div>Loading...</div>;
   }
