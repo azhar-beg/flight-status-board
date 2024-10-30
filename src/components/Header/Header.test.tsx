@@ -22,8 +22,6 @@ describe('Header Component', () => {
     );
     expect(screen.getByText('Home')).toBeInTheDocument();
     expect(screen.getByText('Flights')).toBeInTheDocument();
-    expect(screen.getByText('About')).toBeInTheDocument();
-    expect(screen.getByText('Contact')).toBeInTheDocument();
   });
 
   it('navigates to the correct path when a link is clicked', () => {
@@ -33,8 +31,6 @@ describe('Header Component', () => {
       </ThemeProvider>
     );
     expect(screen.getByText('Home').closest('a')).toHaveAttribute('href', '/');
-    expect(screen.getByText('Flights').closest('a')).toHaveAttribute('href', '/flights');
-    expect(screen.getByText('About').closest('a')).toHaveAttribute('href', '#about');
-    expect(screen.getByText('Contact').closest('a')).toHaveAttribute('href', '#contact');
+    expect(screen.getByText('Flights').closest('a')).toHaveAttribute('href', '/');
   });
 });

@@ -2,6 +2,18 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import { formatTime } from '../../utils/utils';
 import useFlightData from '../../hooks/useFlightData';
+import {
+  Container,
+  Title,
+  FlightInfoContainer,
+  FlightInfo,
+  Line,
+  OriginDestination,
+  PlaneIcon,
+  Status
+} from './FlightDetails.styles';
+
+import planeIcon from '../../assets/plane.png';
 
 export interface FlightDetails {
   id: number;
@@ -17,6 +29,7 @@ const FlightDetails = () => {
   const { id } = useParams();
 
   const { response: flightDetails, error, loading } = useFlightData<FlightDetails>(Number(id));
+
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -30,16 +43,25 @@ const FlightDetails = () => {
   }
 
   return (
-    <div>
-      <h2>Flight Details</h2>
-      <p>Flight details go here: {id}</p>
-      <p>Flight Number: {flightDetails.flightNumber}</p>
-      <p>Airline: {flightDetails.airline}</p>
-      <p>Origin: {flightDetails.origin}</p>
-      <p>Destination: {flightDetails.destination}</p>
-      <p>Departure Time: {formatTime(flightDetails.departureTime)}</p>
-      <p>Status: {flightDetails.status}</p>
-    </div>
+    <Container>
+      <Title>Flight Details</Title>
+      <FlightInfoContainer>
+        <Status className={`status-${flightDetails.status.toLowerCase().replace(' ', '-')}`}>
+          {flightDetails.status}
+        </Status>
+        <FlightInfo>{formatTime(flightDetails.departureTime)}</FlightInfo>
+        <FlightInfo>{flightDetails.flightNumber}</FlightInfo>
+        <FlightInfo>{flightDetails.airline}</FlightInfo>
+      </FlightInfoContainer>
+
+      <OriginDestination>
+        <span>{flightDetails.origin}</span>
+        <Line />
+        <PlaneIcon src={planeIcon} alt="Plane" />
+        <Line />
+        <span>{flightDetails.destination}</span>
+      </OriginDestination>
+    </Container>
   );
 };
 

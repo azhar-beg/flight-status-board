@@ -14,7 +14,7 @@ jest.mock('../../api/httpClient');
 
 const mockNavigate = jest.fn();
 jest.mock('react-router-dom', () => ({
-  ...jest.requireActual('react-router-dom'), // Keep other functionalities intact
+  ...jest.requireActual('react-router-dom'),
   useNavigate: () => mockNavigate
 }));
 

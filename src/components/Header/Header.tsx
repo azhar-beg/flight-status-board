@@ -11,13 +11,7 @@ const Header = () => (
             <a href="/">Home</a>
           </li>
           <li>
-            <a href="/flights">Flights</a>
-          </li>
-          <li>
-            <a href="#about">About</a>
-          </li>
-          <li>
-            <a href="#contact">Contact</a>
+            <a href="/">Flights</a>
           </li>
         </ul>
       </NavMenu>

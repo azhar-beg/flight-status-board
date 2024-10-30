@@ -1,9 +1,9 @@
-const theme = {
+export const theme = {
   colors: {
-    primary: '#EDDFE0',
-    secondary: '#F5F5F7',
-    header: '#B7B7B7',
-    text: '#705C53',
+    primary: '#F6F5F2',
+    secondary: '#F0EBE3',
+    header: '#B5C0D0',
+    text: '#555555',
     status: {
       onTime: 'green',
       delayed: 'orange',
