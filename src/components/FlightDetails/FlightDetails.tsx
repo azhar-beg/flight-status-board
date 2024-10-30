@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import { formatTime } from '../../utils';
+import { formatTime } from '../../utils/utils';
 import useFlightData from '../../hooks/useFlightData';
 
 export interface FlightDetails {
