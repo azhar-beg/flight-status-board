@@ -1,12 +1,12 @@
 import React, { act } from 'react';
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { fireEvent, screen, waitFor } from '@testing-library/react';
+import { render } from '../../setupTests';
 import Flights from './Flights';
 import { flightServiceClient } from '../../api/httpClient';
-import { ThemeProvider } from 'styled-components';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { useNavigate } from 'react-router-dom';
 import { MemoryRouter } from 'react-router-dom';
-import theme from '../../utils/theme';
+import { travelQuotes } from '../../utils/messages';
 
 const mockedAxios = flightServiceClient as jest.Mocked<typeof flightServiceClient>;
 
@@ -46,17 +46,19 @@ describe('Flights Component', () => {
         <Flights />
       </MemoryRouter>
     );
-    expect(screen.getByText(/loading/i)).toBeInTheDocument();
+    const quote = screen.getByText((content) => {
+      return travelQuotes.includes(content);
+    });
+
+    expect(quote).toBeInTheDocument();
   });
 
   it('renders flight data correctly', async () => {
     mockedAxios.get.mockResolvedValueOnce({ data: mockFlights });
     render(
-      <ThemeProvider theme={theme}>
-        <MemoryRouter>
-          <Flights />
-        </MemoryRouter>
-      </ThemeProvider>
+      <MemoryRouter>
+        <Flights />
+      </MemoryRouter>
     );
 
     await waitFor(() => {
@@ -67,11 +69,9 @@ describe('Flights Component', () => {
   it('renders error state when API call fails', async () => {
     mockedAxios.get.mockRejectedValueOnce(new Error('API Error'));
     render(
-      <ThemeProvider theme={theme}>
-        <MemoryRouter>
-          <Flights />
-        </MemoryRouter>
-      </ThemeProvider>
+      <MemoryRouter>
+        <Flights />
+      </MemoryRouter>
     );
 
     const error = 'No Flights Available';
@@ -83,11 +83,9 @@ describe('Flights Component', () => {
   it('renders empty state when no flights are available', async () => {
     mockedAxios.get.mockResolvedValueOnce({ data: [] });
     render(
-      <ThemeProvider theme={theme}>
-        <MemoryRouter>
-          <Flights />
-        </MemoryRouter>
-      </ThemeProvider>
+      <MemoryRouter>
+        <Flights />
+      </MemoryRouter>
     );
 
     await waitFor(() => {
@@ -98,11 +96,9 @@ describe('Flights Component', () => {
   it('navigates to flight details on row click', async () => {
     mockedAxios.get.mockResolvedValueOnce({ data: mockFlights });
     render(
-      <ThemeProvider theme={theme}>
-        <MemoryRouter>
-          <Flights />
-        </MemoryRouter>
-      </ThemeProvider>
+      <MemoryRouter>
+        <Flights />
+      </MemoryRouter>
     );
 
     await waitFor(() => {
@@ -115,11 +111,9 @@ describe('Flights Component', () => {
   it('renders different flight statuses correctly', async () => {
     mockedAxios.get.mockResolvedValueOnce({ data: mockFlights });
     render(
-      <ThemeProvider theme={theme}>
-        <MemoryRouter>
-          <Flights />
-        </MemoryRouter>
-      </ThemeProvider>
+      <MemoryRouter>
+        <Flights />
+      </MemoryRouter>
     );
 
     await waitFor(() => {
@@ -144,11 +138,9 @@ describe('Flights Component', () => {
       ]
     });
     render(
-      <ThemeProvider theme={theme}>
-        <MemoryRouter>
-          <Flights />
-        </MemoryRouter>
-      </ThemeProvider>
+      <MemoryRouter>
+        <Flights />
+      </MemoryRouter>
     );
 
     act(() => {

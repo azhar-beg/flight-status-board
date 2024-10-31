@@ -1,9 +1,8 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import ErrorBoundary from './ErrorBoundary';
 import { errorMessages } from '../../utils/messages';
-import { ThemeProvider } from 'styled-components';
-import theme from '../../utils/theme';
+import { render } from '../../setupTests';
 
 describe('ErrorBoundary Component', () => {
   it('renders children when there is no error', () => {
@@ -21,11 +20,9 @@ describe('ErrorBoundary Component', () => {
     };
 
     render(
-      <ThemeProvider theme={theme}>
-        <ErrorBoundary>
-          <ThrowError />
-        </ErrorBoundary>
-      </ThemeProvider>
+      <ErrorBoundary>
+        <ThrowError />
+      </ErrorBoundary>
     );
 
     expect(screen.getByText(errorMessages.default.header)).toBeInTheDocument();

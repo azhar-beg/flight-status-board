@@ -1,11 +1,10 @@
 import React from 'react';
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { fireEvent, screen, waitFor } from '@testing-library/react';
+import { render } from '../../setupTests';
 import FlightDetails from './FlightDetails';
 import { flightServiceClient } from '../../api/httpClient';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
-import { ThemeProvider } from 'styled-components';
-import theme from '../../utils/theme';
-import { errorMessages } from '../../utils/messages';
+import { errorMessages, travelQuotes } from '../../utils/messages';
 
 const mockedAxios = flightServiceClient as jest.Mocked<typeof flightServiceClient>;
 
@@ -41,20 +40,23 @@ describe('FlightDetails Component', () => {
         </Routes>
       </MemoryRouter>
     );
-    expect(screen.getByText('Loading...')).toBeInTheDocument();
+
+    const quote = screen.getByText((content) => {
+      return travelQuotes.includes(content);
+    });
+
+    expect(quote).toBeInTheDocument();
   });
 
   it('renders flight details correctly', async () => {
     mockedAxios.get.mockResolvedValueOnce({ data: mockFlightDetails });
 
     render(
-      <ThemeProvider theme={theme}>
-        <MemoryRouter initialEntries={['/flights/1']}>
-          <Routes>
-            <Route path="/flights/:id" element={<FlightDetails />} />
-          </Routes>
-        </MemoryRouter>
-      </ThemeProvider>
+      <MemoryRouter initialEntries={['/flights/1']}>
+        <Routes>
+          <Route path="/flights/:id" element={<FlightDetails />} />
+        </Routes>
+      </MemoryRouter>
     );
 
     await waitFor(() => {
@@ -63,7 +65,7 @@ describe('FlightDetails Component', () => {
       expect(screen.getByText('American Airlines')).toBeInTheDocument();
       expect(screen.getByText('JFK')).toBeInTheDocument();
       expect(screen.getByText('LAX')).toBeInTheDocument();
-      expect(screen.getByText('October 1, 2023 at 03:30 PM')).toBeInTheDocument();
+      expect(screen.getByText('Oct 1, 2023, 10:00 AM')).toBeInTheDocument();
       expect(screen.getByText('On Time')).toBeInTheDocument();
     });
   });
@@ -73,11 +75,9 @@ describe('FlightDetails Component', () => {
 
     render(
       <MemoryRouter initialEntries={['/flights/1']}>
-        <ThemeProvider theme={theme}>
-          <Routes>
-            <Route path="/flights/:id" element={<FlightDetails />} />
-          </Routes>
-        </ThemeProvider>
+        <Routes>
+          <Route path="/flights/:id" element={<FlightDetails />} />
+        </Routes>
       </MemoryRouter>
     );
 
@@ -92,11 +92,9 @@ describe('FlightDetails Component', () => {
 
     render(
       <MemoryRouter initialEntries={['/flights/1']}>
-        <ThemeProvider theme={theme}>
-          <Routes>
-            <Route path="/flights/:id" element={<FlightDetails />} />
-          </Routes>
-        </ThemeProvider>
+        <Routes>
+          <Route path="/flights/:id" element={<FlightDetails />} />
+        </Routes>
       </MemoryRouter>
     );
 

@@ -6,6 +6,7 @@ import { DepartureTime, StyledTable, TableContainer } from './Flights.styles';
 import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
 import ErrorPage from '../ErrorPage/ErrorPage';
 import { errorMessages } from '../../utils/messages';
+import Loader from '../Loader/Loader';
 
 interface Flight {
   id: number;
@@ -22,7 +23,7 @@ const Flights = () => {
   const { response: flights, error, loading } = useFlightData<Flight[]>();
 
   if (loading) {
-    return <p>Loading...</p>;
+    return <Loader />;
   }
 
   if (error || !flights || flights.length === 0) {

@@ -1,11 +1,14 @@
 export const formatTime = (departureTime: string): string => {
   const date = new Date(departureTime);
-  return date.toLocaleString('en-US', {
+  const options: Intl.DateTimeFormatOptions = {
     year: 'numeric',
-    month: 'long', // Use 'short' for abbreviated month name
+    month: 'long',
     day: 'numeric',
     hour: '2-digit',
     minute: '2-digit',
-    hour12: true // Set to false for 24-hour format
-  });
+    hour12: true,
+    timeZone: 'UTC'
+  };
+
+  return date.toLocaleString('en-India', options);
 };

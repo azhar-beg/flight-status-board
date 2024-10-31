@@ -17,6 +17,7 @@ import planeIcon from '../../assets/plane.png';
 import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
 import ErrorPage from '../ErrorPage/ErrorPage';
 import { errorMessages } from '../../utils/messages';
+import Loader from '../Loader/Loader';
 
 export interface FlightDetails {
   id: number;
@@ -34,7 +35,7 @@ const FlightDetails = () => {
   const { response: flightDetails, error, loading } = useFlightData<FlightDetails>(Number(id));
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <Loader />;
   }
 
   if (error || !flightDetails) {

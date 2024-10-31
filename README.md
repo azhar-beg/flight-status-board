@@ -8,7 +8,7 @@
 4. Open your browser and navigate to `http://localhost:3000/`
 5. Enjoy!
 
-- If you start the project and get some error from server you will see the error stack due to local environment.
+- If you start the project and get some error from server side or any other failure you will see the error stack due to local environment.
 - You will have to close this manually by clicking on 'X' mark in the top right corner.
 - If you don't want to see the error stack, you can run the project in production mode by running `npm run build` and then `serve -s build` in the root directory.
 

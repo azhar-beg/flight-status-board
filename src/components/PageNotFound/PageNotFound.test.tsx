@@ -1,10 +1,9 @@
 import React from 'react';
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { screen, fireEvent, waitFor } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import NotFound from './PageNotFound';
 import { errorMessages } from '../../utils/messages';
-import { ThemeProvider } from 'styled-components';
-import theme from '../../utils/theme';
+import { render } from '../../setupTests';
 
 const mockNavigate = jest.fn();
 jest.mock('react-router-dom', () => ({
@@ -16,9 +15,7 @@ describe('NotFound Component', () => {
   it('renders the page not found error message correctly', () => {
     render(
       <MemoryRouter>
-        <ThemeProvider theme={theme}>
-          <NotFound />
-        </ThemeProvider>
+        <NotFound />
       </MemoryRouter>
     );
     expect(screen.getByText(errorMessages.pageNotFound.header)).toBeInTheDocument();
@@ -29,9 +26,7 @@ describe('NotFound Component', () => {
   it('navigates to home page when action button is clicked', async () => {
     render(
       <MemoryRouter>
-        <ThemeProvider theme={theme}>
-          <NotFound />
-        </ThemeProvider>
+        <NotFound />
       </MemoryRouter>
     );
 

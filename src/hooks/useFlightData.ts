@@ -15,7 +15,7 @@ const useFlightData = <T>(id?: number): UseFlightDataResult<T> => {
   useEffect(() => {
     const fetchFlightData = async () => {
       try {
-        const apiUrl = id ? `/flightss/${id}` : '/flights';
+        const apiUrl = id ? `/flights/${id}` : '/flights';
         const res = await flightServiceClient.get<T>(apiUrl);
         setResponse(res.data);
       } catch (err) {
