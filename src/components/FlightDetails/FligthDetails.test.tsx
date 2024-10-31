@@ -1,12 +1,19 @@
 import React from 'react';
-import { render, screen, waitFor } from '@testing-library/react';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import FlightDetails from './FlightDetails';
 import { flightServiceClient } from '../../api/httpClient';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import theme from '../../utils/theme';
+import { errorMessages } from '../../utils/messages';
 
 const mockedAxios = flightServiceClient as jest.Mocked<typeof flightServiceClient>;
+
+const mockNavigate = jest.fn();
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useNavigate: () => mockNavigate
+}));
 
 jest.mock('../../api/httpClient');
 
@@ -76,7 +83,7 @@ describe('FlightDetails Component', () => {
 
     await waitFor(() => {
       expect(screen.queryByText('Loading...')).not.toBeInTheDocument();
-      expect(screen.getByText('Flight Details Not Available')).toBeInTheDocument();
+      expect(screen.getByText('Flight Details Are Not Available')).toBeInTheDocument();
     });
   });
 
@@ -95,7 +102,10 @@ describe('FlightDetails Component', () => {
 
     await waitFor(() => {
       expect(screen.queryByText('Loading...')).not.toBeInTheDocument();
-      expect(screen.getByText('Flight Details Not Available')).toBeInTheDocument();
+      expect(screen.getByText('Flight Details Are Not Available')).toBeInTheDocument();
     });
+
+    fireEvent.click(screen.getByText(errorMessages.flightDetailsNotFound.label));
+    await waitFor(() => expect(mockNavigate).toHaveBeenCalledWith('/'));
   });
 });

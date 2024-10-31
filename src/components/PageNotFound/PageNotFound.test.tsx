@@ -12,8 +12,6 @@ jest.mock('react-router-dom', () => ({
   useNavigate: () => mockNavigate
 }));
 
-
-
 describe('NotFound Component', () => {
   it('renders the page not found error message correctly', () => {
     render(
@@ -29,7 +27,6 @@ describe('NotFound Component', () => {
   });
 
   it('navigates to home page when action button is clicked', async () => {
-
     render(
       <MemoryRouter>
         <ThemeProvider theme={theme}>

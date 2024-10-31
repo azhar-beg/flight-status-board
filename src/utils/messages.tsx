@@ -1,7 +1,7 @@
 export const errorMessages = {
   default: {
     header: 'Something went wrong!',
-    message: 'We encountered an unexpected error. Please try after some time'
+    message: 'We encountered an unexpected error. Please try after some time.'
   },
   pageNotFound: {
     header: '404 - Page Not Found',
@@ -11,11 +11,12 @@ export const errorMessages = {
   },
   flightsNotFound: {
     header: 'No Flights Available',
-    message: 'We are not able to fetch flight data, please try after some time'
+    message: 'We are not able to fetch flight details, please try after some time.'
   },
   flightDetailsNotFound: {
-    header: 'Flight Details Not Available',
-    message: 'We are not able to fetch flight details, please try after some time',
+    header: 'Flight Details Are Not Available',
+    message:
+      'We are not able to fetch the flight details at the moment, please try after some time.',
     label: 'Flights Status Board'
   }
 };
