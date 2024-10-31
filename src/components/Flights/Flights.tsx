@@ -3,8 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import { formatTime } from '../../utils/utils';
 import useFlightData from '../../hooks/useFlightData';
 import { DepartureTime, StyledTable, TableContainer } from './Flights.styles';
+import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
+import ErrorPage from '../ErrorPage/ErrorPage';
+import { errorMessages } from '../../utils/messages';
 
-export interface Flight {
+interface Flight {
   id: number;
   flightNumber: string;
   airline: string;
@@ -19,15 +22,11 @@ const Flights = () => {
   const { response: flights, error, loading } = useFlightData<Flight[]>();
 
   if (loading) {
-    return <div>Loading flights...</div>;
+    return <p>Loading...</p>;
   }
 
-  if (error) {
-    return <div>Failed to load flights. Please try again later.</div>;
-  }
-
-  if (!flights || flights.length === 0) {
-    return <div>No flights available</div>;
+  if (error || !flights || flights.length === 0) {
+    throw new Error('Flights not found');
   }
 
   return (
@@ -67,4 +66,17 @@ const Flights = () => {
   );
 };
 
-export default Flights;
+const FlightsWithErrorBoundary = () => {
+  const fallBack = (
+    <ErrorPage
+      header={errorMessages.flightsNotFound.header}
+      message={errorMessages.flightsNotFound.message}
+    />
+  );
+  return (
+    <ErrorBoundary fallback={fallBack}>
+      <Flights />
+    </ErrorBoundary>
+  );
+};
+export default FlightsWithErrorBoundary;

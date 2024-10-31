@@ -5,16 +5,21 @@ import Flights from './components/Flights/Flights';
 import FlightDetails from './components/FlightDetails/FlightDetails';
 import Header from './components/Header/Header';
 import theme from './utils/theme';
+import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary';
+import PageNotFound from './components/PageNotFound/PageNotFound';
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
       <div>
         <Header />
-        <Routes>
-          <Route path="/" element={<Flights />} />
-          <Route path="/flight-details/:id" element={<FlightDetails />} />
-        </Routes>
+        <ErrorBoundary>
+          <Routes>
+            <Route path="/" element={<Flights />} />
+            <Route path="/flight-details/:id" element={<FlightDetails />} />
+            <Route path="*" element={<PageNotFound />} />
+          </Routes>
+        </ErrorBoundary>
       </div>
     </ThemeProvider>
   );

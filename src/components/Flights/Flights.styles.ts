@@ -38,6 +38,9 @@ export const StyledTable = styled.table`
     }
   }
 
+  td:nth-last-child(1) {
+    font-weight: bolder;
+  }
   td {
     padding: 12px;
     text-align: left;

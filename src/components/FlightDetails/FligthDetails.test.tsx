@@ -42,11 +42,11 @@ describe('FlightDetails Component', () => {
 
     render(
       <ThemeProvider theme={theme}>
-      <MemoryRouter initialEntries={['/flights/1']}>
-        <Routes>
-          <Route path="/flights/:id" element={<FlightDetails />} />
-        </Routes>
-      </MemoryRouter>
+        <MemoryRouter initialEntries={['/flights/1']}>
+          <Routes>
+            <Route path="/flights/:id" element={<FlightDetails />} />
+          </Routes>
+        </MemoryRouter>
       </ThemeProvider>
     );
 
@@ -66,15 +66,17 @@ describe('FlightDetails Component', () => {
 
     render(
       <MemoryRouter initialEntries={['/flights/1']}>
-        <Routes>
-          <Route path="/flights/:id" element={<FlightDetails />} />
-        </Routes>
+        <ThemeProvider theme={theme}>
+          <Routes>
+            <Route path="/flights/:id" element={<FlightDetails />} />
+          </Routes>
+        </ThemeProvider>
       </MemoryRouter>
     );
 
     await waitFor(() => {
       expect(screen.queryByText('Loading...')).not.toBeInTheDocument();
-      expect(screen.getByText('Error loading flight details')).toBeInTheDocument();
+      expect(screen.getByText('Flight Details Not Available')).toBeInTheDocument();
     });
   });
 
@@ -83,15 +85,17 @@ describe('FlightDetails Component', () => {
 
     render(
       <MemoryRouter initialEntries={['/flights/1']}>
-        <Routes>
-          <Route path="/flights/:id" element={<FlightDetails />} />
-        </Routes>
+        <ThemeProvider theme={theme}>
+          <Routes>
+            <Route path="/flights/:id" element={<FlightDetails />} />
+          </Routes>
+        </ThemeProvider>
       </MemoryRouter>
     );
 
     await waitFor(() => {
       expect(screen.queryByText('Loading...')).not.toBeInTheDocument();
-      expect(screen.getByText('No flight details available')).toBeInTheDocument();
+      expect(screen.getByText('Flight Details Not Available')).toBeInTheDocument();
     });
   });
 });

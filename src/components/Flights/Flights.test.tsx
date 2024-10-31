@@ -74,7 +74,7 @@ describe('Flights Component', () => {
       </ThemeProvider>
     );
 
-    const error = 'Failed to load flights. Please try again later.';
+    const error = 'No Flights Available';
     await waitFor(() => {
       expect(screen.getByText(error)).toBeInTheDocument();
     });

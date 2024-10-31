@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { formatTime } from '../../utils/utils';
 import useFlightData from '../../hooks/useFlightData';
 import {
@@ -14,6 +14,9 @@ import {
 } from './FlightDetails.styles';
 
 import planeIcon from '../../assets/plane.png';
+import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
+import ErrorPage from '../ErrorPage/ErrorPage';
+import { errorMessages } from '../../utils/messages';
 
 export interface FlightDetails {
   id: number;
@@ -34,12 +37,8 @@ const FlightDetails = () => {
     return <div>Loading...</div>;
   }
 
-  if (error) {
-    return <div>Error loading flight details</div>;
-  }
-
-  if (!flightDetails) {
-    return <div>No flight details available</div>;
+  if (error || !flightDetails) {
+    throw new Error('Error fetching flight details');
   }
 
   return (
@@ -64,4 +63,22 @@ const FlightDetails = () => {
   );
 };
 
-export default FlightDetails;
+const FlightDetailsWithErrorBoundary = () => {
+  const navigate = useNavigate();
+  const fallBack = (
+    <ErrorPage
+      header={errorMessages.flightDetailsNotFound.header}
+      message={errorMessages.flightDetailsNotFound.message}
+      actionLabel={errorMessages.flightDetailsNotFound.label}
+      onAction={() => navigate('/')}
+    />
+  );
+
+  return (
+    <ErrorBoundary fallback={fallBack}>
+      <FlightDetails />
+    </ErrorBoundary>
+  );
+};
+
+export default FlightDetailsWithErrorBoundary;
