@@ -7,6 +7,7 @@ import Header from './components/Header/Header';
 import theme from './utils/theme';
 import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary';
 import PageNotFound from './components/PageNotFound/PageNotFound';
+import Loader from './components/Loader/Loader';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Flights />} />
             <Route path="/flight-details/:id" element={<FlightDetails />} />
+            <Route path="/fun" element={<Loader />} />
             <Route path="*" element={<PageNotFound />} />
           </Routes>
         </ErrorBoundary>

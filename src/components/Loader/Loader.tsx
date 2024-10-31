@@ -4,12 +4,14 @@ import { travelQuotes } from '../../utils/messages';
 
 const BannerContainer = styled.div`
   background-color: ${({ theme }) => theme.colors.primary};
-  padding: auto;
+  padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  width: 400px;
+  width: 500px;
+  max-width: 75%;
   margin: 100px auto;
   text-align: center;
+  height: auto;
 `;
 
 const GifImage = styled.img`
