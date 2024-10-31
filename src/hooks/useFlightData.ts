@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { flightServiceClient } from '../api/httpClient';
+import { BOARD_UPDATE_INTERVAL } from '../utils/constants';
 
 interface UseFlightDataResult<T> {
   response: T | null;
@@ -28,7 +29,7 @@ const useFlightData = <T>(id?: number): UseFlightDataResult<T> => {
     fetchFlightData();
 
     if (!id) {
-      const intervalId = setInterval(fetchFlightData, 3000);
+      const intervalId = setInterval(fetchFlightData, BOARD_UPDATE_INTERVAL);
       return () => clearInterval(intervalId);
     }
   }, [id]);
