@@ -1,5 +1,5 @@
 import React from 'react';
-import { ThemeProvider } from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
 import { Routes, Route } from 'react-router-dom';
 import Flights from './components/Flights/Flights';
 import FlightDetails from './components/FlightDetails/FlightDetails';
@@ -9,10 +9,15 @@ import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary';
 import PageNotFound from './components/PageNotFound/PageNotFound';
 import Loader from './components/Loader/Loader';
 
+const AppContainer = styled.div`
+  background-color: ${({ theme }) => theme.colors.background};
+  min-height: 100vh;
+`;
+
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <div>
+      <AppContainer>
         <Header />
         <ErrorBoundary>
           <Routes>
@@ -22,7 +27,7 @@ function App() {
             <Route path="*" element={<PageNotFound />} />
           </Routes>
         </ErrorBoundary>
-      </div>
+      </AppContainer>
     </ThemeProvider>
   );
 }

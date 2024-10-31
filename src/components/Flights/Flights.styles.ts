@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const TableContainer = styled.div`
+  color: ${({ theme }) => theme.colors.text};
   background-color: ${({ theme }) => theme.colors.primary};
   margin: 20px;
   padding: 20px;
@@ -34,7 +35,7 @@ export const StyledTable = styled.table`
     }
 
     &:hover {
-      background-color: #d9d9d9;
+      background-color: ${({ theme }) => theme.colors.hover};
     }
   }
 

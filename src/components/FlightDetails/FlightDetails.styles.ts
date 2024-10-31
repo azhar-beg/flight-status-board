@@ -11,12 +11,13 @@ export const Container = styled.div`
 `;
 
 export const Title = styled.h2`
-  color: #343a40;
+  color: ${({ theme }) => theme.colors.text};
   overflow-x: auto;
   margin-bottom: 20px;
 `;
 
 export const FlightInfoContainer = styled.div`
+  color: ${({ theme }) => theme.colors.text};
   display: flex;
   overflow-x: auto;
   align-items: center;
@@ -35,6 +36,7 @@ export const Line = styled.div`
 `;
 
 export const Journey = styled.div`
+  color: ${({ theme }) => theme.colors.text};
   overflow-x: auto;
   display: flex;
   align-items: center;
@@ -46,20 +48,21 @@ export const PlaneIcon = styled.img`
 
 export const Status = styled.span`
   font-size: 16px;
+  font-weight: bold;
 
   &.status-on-time {
-    color: green;
+    color: ${({ theme }) => theme.colors.status.onTime};
   }
 
   &.status-delayed {
-    color: orange;
+    color: ${({ theme }) => theme.colors.status.delayed};
   }
 
   &.status-boarding {
-    color: blue;
+    color: ${({ theme }) => theme.colors.status.boarding};
   }
 
   &.status-departed {
-    color: gray;
+    color: ${({ theme }) => theme.colors.status.departed};
   }
 `;
