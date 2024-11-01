@@ -1,7 +1,6 @@
 # Flight Status Board
 
 ## To run the application on your local machine:
-
 1. Make sure you have Node.js (version - 20.x.x) installed on your machine, if not you can download it from [here](https://nodejs.org/en/download/)
 2. Clone the repository
 3. Run `npm install` in the root directory
@@ -21,3 +20,4 @@
 ## To run the tests:
 1. Run `npm test` in the root directory
 
+### If you want to update the interval for fetching flight details, please update the `BOARD_UPDATE_INTERVAL` variable in `constants.js` file.
