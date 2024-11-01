@@ -26,7 +26,7 @@ export const darkTheme = {
     text: '#FFFFFF',
     tableHeaderText: '#000000',
     status: {
-      onTime: 'green',
+      onTime: 'lightgreen',
       delayed: 'orange',
       boarding: 'lightblue',
       departed: '#CCCCCC'

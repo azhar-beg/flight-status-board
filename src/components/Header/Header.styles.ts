@@ -29,7 +29,7 @@ export const ButtonWrapper = styled.button`
   background-color: transparent;
   border-radius: 4px;
   padding: 5px;
-  border: 1px solid ${({ theme }) => theme.colors.secondary};
+  border: 1px solid #8f8f8f;
   color: ${({ theme }) => theme.colors.text};
   cursor: pointer;
   font-size: 20px;
