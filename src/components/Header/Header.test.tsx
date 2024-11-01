@@ -15,7 +15,7 @@ describe('Header Component', () => {
   it('renders the title correctly', () => {
     render(
       <MemoryRouter>
-        <Header />
+        <Header isLightTheme={true} toggleTheme={jest.fn()} />
       </MemoryRouter>
     );
     expect(screen.getByText('Flight Status Board')).toBeInTheDocument();
@@ -24,7 +24,7 @@ describe('Header Component', () => {
   it('renders the navigation menu with all links', () => {
     const { container } = render(
       <MemoryRouter>
-        <Header />
+        <Header isLightTheme={true} toggleTheme={jest.fn()} />
       </MemoryRouter>
     );
     expect(container.querySelector('#home')).toBeInTheDocument();
@@ -33,7 +33,7 @@ describe('Header Component', () => {
   it('navigates to the correct path when a link is clicked', async () => {
     const { container } = render(
       <MemoryRouter>
-        <Header />
+        <Header isLightTheme={true} toggleTheme={jest.fn()} />
       </MemoryRouter>
     );
     fireEvent.click(container.querySelector('#home')!);

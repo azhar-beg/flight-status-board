@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App Component should match previous snapshot 1`] = `
+<DocumentFragment>
+  <div>
+    <header
+      class="sc-eOzmre eJRueW"
+    >
+      <div
+        class="header-container"
+      >
+        <h1
+          class="sc-eauhAA laKdas"
+        >
+          Flight Status Board
+        </h1>
+        <nav
+          class="sc-fFoeYl fntnNB"
+        >
+          <ul>
+            <li>
+              <button
+                class="sc-gQaihK chmoUq"
+                id="home"
+              >
+                Home
+              </button>
+            </li>
+          </ul>
+          <label
+            class="sc-iuUfFv kTzNpg"
+          >
+            <span>
+              Light
+            </span>
+            <input
+              class="sc-eUlrpB cLvERT"
+              type="checkbox"
+            />
+            <div
+              class="sc-dprtRQ gsdxzh"
+            />
+          </label>
+        </nav>
+      </div>
+    </header>
+    <div
+      id="loader"
+      style="display: flex; justify-content: center; align-items: center;"
+    >
+      <div
+        class="sc-kLhKbu dBpLNs"
+      >
+        <img
+          alt="Loading..."
+          class="sc-ixGGxD imZNBa"
+          src="loader.gif"
+        />
+        <p
+          class="sc-khLCKb fEMHbM"
+        >
+          Remember that happiness is a way of travel, not a destination.
+        </p>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

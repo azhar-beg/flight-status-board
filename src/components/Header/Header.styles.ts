@@ -14,6 +14,8 @@ export const Title = styled.h1`
 `;
 
 export const NavMenu = styled.nav`
+  display: flex;
+  justify-content: space-between;
   ul {
     overflow-x: auto;
     padding: 10px;

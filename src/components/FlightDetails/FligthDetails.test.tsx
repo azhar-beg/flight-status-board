@@ -65,7 +65,7 @@ describe('FlightDetails Component', () => {
       expect(screen.getByText('American Airlines')).toBeInTheDocument();
       expect(screen.getByText('JFK')).toBeInTheDocument();
       expect(screen.getByText('LAX')).toBeInTheDocument();
-      expect(screen.getByText('Oct 1, 2023, 10:00 AM')).toBeInTheDocument();
+      expect(screen.getByText('October 1, 2023 at 10:00 AM')).toBeInTheDocument();
       expect(screen.getByText('On Time')).toBeInTheDocument();
     });
   });

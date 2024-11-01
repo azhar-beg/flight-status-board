@@ -1,8 +1,14 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { HeaderContainer, NavMenu, Title, ButtonWrapper } from './Header.styles';
 import { useNavigate } from 'react-router-dom';
+import ToggleSwitch from '../ToggleSwitch/ToggleSwitch';
 
-const Header = () => {
+interface HeaderProps {
+  toggleTheme: () => void;
+  isLightTheme: boolean;
+}
+
+const Header: FC<HeaderProps> = ({ toggleTheme, isLightTheme }) => {
   const navigate = useNavigate();
   return (
     <HeaderContainer>
@@ -19,6 +25,7 @@ const Header = () => {
               </ButtonWrapper>
             </li>
           </ul>
+          <ToggleSwitch toggle={toggleTheme} checked={!isLightTheme} />
         </NavMenu>
       </div>
     </HeaderContainer>

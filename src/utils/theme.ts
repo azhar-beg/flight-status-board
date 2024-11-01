@@ -1,4 +1,4 @@
-const theme = {
+export const lightTheme = {
   colors: {
     background: 'aliceblue',
     primary: '#F6F5F2',
@@ -16,4 +16,18 @@ const theme = {
   }
 };
 
-export default theme;
+export const darkTheme = {
+  ...lightTheme,
+  colors: {
+    ...lightTheme.colors,
+    background: '#333333',
+    primary: '#444444',
+    secondary: '#555555',
+    header: '#666666',
+    hover: '#777777',
+    text: '#FFFFFF',
+    tableHeaderText: '#000000'
+  }
+};
+
+export default lightTheme;
