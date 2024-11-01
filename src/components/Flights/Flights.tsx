@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { formatTime } from '../../utils/utils';
+import { formatTime, statusClassname } from '../../utils/utils';
 import useFlightData from '../../hooks/useFlightData';
 import { DepartureTime, StyledTable, TableContainer } from './Flights.styles';
 import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
@@ -30,6 +30,10 @@ const Flights = () => {
     throw new Error('Flights not found');
   }
 
+  const navigateToFlightDetails = (id: number) => {
+    navigate(`/flight-details/${id}`);
+  };
+
   return (
     <TableContainer>
       <StyledTable role="table">
@@ -47,7 +51,7 @@ const Flights = () => {
           {flights.map((flight) => {
             const [date, time] = formatTime(flight.departureTime).split(' at ');
             return (
-              <tr key={flight.id} onClick={() => navigate(`/flight-details/${flight.id}`)}>
+              <tr key={flight.id} onClick={() => navigateToFlightDetails(flight.id)}>
                 <td>{flight.flightNumber}</td>
                 <td>{flight.airline}</td>
                 <td>{flight.origin}</td>
@@ -55,9 +59,7 @@ const Flights = () => {
                 <td>
                   <DepartureTime>{time}</DepartureTime> {date}
                 </td>
-                <td className={`status-${flight.status.toLowerCase().replace(' ', '-')}`}>
-                  {flight.status}
-                </td>
+                <td className={statusClassname(flight.status)}>{flight.status}</td>
               </tr>
             );
           })}

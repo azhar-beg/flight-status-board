@@ -12,3 +12,6 @@ export const formatTime = (departureTime: string): string => {
 
   return date.toLocaleString('en-India', options);
 };
+
+export const statusClassname = (status: string) =>
+  `status-${status.toLowerCase().replace(' ', '-')}`;

@@ -2,11 +2,12 @@
 
 ## To run the application on your local machine:
 
-1. Clone the repository
-2. Run `npm install` in the root directory
-3. Run `npm start` in the root directory
-4. Open your browser and navigate to `http://localhost:3000/`
-5. Enjoy!
+1. Make sure you have Node.js (version - 20.x.x) installed on your machine, if not you can download it from [here](https://nodejs.org/en/download/)
+2. Clone the repository
+3. Run `npm install` in the root directory
+4. Run `npm start` in the root directory
+5. Open your browser and navigate to `http://localhost:3000/`
+6. Enjoy!
 
 - If you start the project and get some error from server side or any other failure you will see the error stack due to local environment.
 - You will have to close this manually by clicking on 'X' mark in the top right corner.

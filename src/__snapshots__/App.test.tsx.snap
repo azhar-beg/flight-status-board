@@ -15,7 +15,7 @@ exports[`App Component should match previous snapshot 1`] = `
           Flight Status Board
         </h1>
         <nav
-          class="sc-fFoeYl fntnNB"
+          class="sc-fFoeYl kqmRsF"
         >
           <ul>
             <li>
@@ -54,10 +54,10 @@ exports[`App Component should match previous snapshot 1`] = `
         <img
           alt="Loading..."
           class="sc-ixGGxD imZNBa"
-          src="loader.gif"
+          src="test-file-stub"
         />
         <p
-          class="sc-khLCKb fEMHbM"
+          class="sc-khLCKb dGxwjN"
         >
           Remember that happiness is a way of travel, not a destination.
         </p>

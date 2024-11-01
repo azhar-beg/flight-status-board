@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { formatTime } from '../../utils/utils';
+import { formatTime, statusClassname } from '../../utils/utils';
 import useFlightData from '../../hooks/useFlightData';
 import {
   Container,
@@ -46,9 +46,7 @@ const FlightDetails = () => {
     <Container>
       <Title>Flight Details</Title>
       <FlightInfoContainer>
-        <Status className={`status-${flightDetails.status.toLowerCase().replace(' ', '-')}`}>
-          {flightDetails.status}
-        </Status>
+        <Status className={statusClassname(flightDetails.status)}>{flightDetails.status}</Status>
         <FlightInfo>{formatTime(flightDetails.departureTime)}</FlightInfo>
         <FlightInfo>{flightDetails.flightNumber}</FlightInfo>
         <FlightInfo>{flightDetails.airline}</FlightInfo>
