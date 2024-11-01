@@ -49,6 +49,7 @@ export const PlaneIcon = styled.img`
 export const Status = styled.span`
   font-size: 16px;
   font-weight: bold;
+  margin-right: 15px;
 
   &.status-on-time {
     color: ${({ theme }) => theme.colors.status.onTime};

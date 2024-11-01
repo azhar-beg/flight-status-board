@@ -10,18 +10,29 @@ export const HeaderContainer = styled.header`
 export const Title = styled.h1`
   padding-left: 10px;
   color: ${({ theme }) => theme.colors.text};
+  overflow-x: auto;
 `;
 
 export const NavMenu = styled.nav`
   ul {
     overflow-x: auto;
-    padding-left: 10px;
+    padding: 10px;
     list-style-type: none;
     display: flex;
     background-color: ${({ theme }) => theme.colors.primary};
+  }
+`;
 
-    li:nth-last-child(1) {
-      margin-left: 20px;
-    }
+export const ButtonWrapper = styled.button`
+  background-color: transparent;
+  border-radius: 4px;
+  padding: 5px;
+  border: 1px solid ${({ theme }) => theme.colors.secondary};
+  color: ${({ theme }) => theme.colors.text};
+  cursor: pointer;
+  font-size: 20px;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.hover};
   }
 `;
