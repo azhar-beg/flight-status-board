@@ -21,7 +21,7 @@ const GifImage = styled.img`
 `;
 
 const Message = styled.p`
-  color: #444400;
+  color: ${({ theme }) => theme.colors.text};
   font-weight: bold;
   margin-bottom: 20px;
 `;
