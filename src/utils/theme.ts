@@ -17,16 +17,20 @@ export const lightTheme = {
 };
 
 export const darkTheme = {
-  ...lightTheme,
   colors: {
-    ...lightTheme.colors,
     background: '#333333',
     primary: '#444444',
     secondary: '#555555',
     header: '#666666',
     hover: '#777777',
     text: '#FFFFFF',
-    tableHeaderText: '#000000'
+    tableHeaderText: '#000000',
+    status: {
+      onTime: 'green',
+      delayed: 'orange',
+      boarding: 'lightblue',
+      departed: '#CCCCCC'
+    }
   }
 };
 

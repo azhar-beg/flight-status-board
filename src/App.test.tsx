@@ -24,7 +24,7 @@ describe('App Component', () => {
 
   afterEach(() => {
     jest.spyOn(global.Math, 'random').mockRestore();
-  })
+  });
 
   it('renders the Flight Status Board link', () => {
     render(
